@@ -202,7 +202,7 @@
     } catch (err) {
       btn.textContent = 'Failed — try again';
       btn.classList.add('error');
-      setStatus('Something went wrong. Try emailing yf2953@nyu.edu directly.', true);
+      setStatus('Something went wrong. Try emailing david328150@gmail.com directly.', true);
       setTimeout(() => {
         btn.textContent = 'Send Message';
         btn.classList.remove('error');
@@ -231,11 +231,11 @@
 
   btn.addEventListener('click', () => {
     if (navigator.clipboard) {
-      navigator.clipboard.writeText('yf2953@nyu.edu').then(showCopied);
+      navigator.clipboard.writeText('david328150@gmail.com').then(showCopied);
     } else {
       // Fallback for older browsers
       const el = document.createElement('textarea');
-      el.value = 'yf2953@nyu.edu';
+      el.value = 'david328150@gmail.com';
       el.style.position = 'fixed';
       el.style.opacity = '0';
       document.body.appendChild(el);
