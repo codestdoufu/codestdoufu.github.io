@@ -54,6 +54,79 @@ nav {
   color: white !important;
 }
 
+/* ── Active nav link ── */
+.nav-links a.active {
+  color: var(--blue-accent);
+  position: relative;
+}
+.nav-links a.active:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--blue-accent);
+  border-radius: 2px;
+}
+
+/* ── Back to top button ── */
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  background: var(--blue-accent);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(27, 79, 138, 0.25);
+}
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+#back-to-top:hover { background: var(--blue-deep); }
+
+/* ── Page loader ── */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+#page-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loader-logo {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--blue-accent);
+  font-style: italic;
+  animation: loaderPulse 0.8s ease infinite alternate;
+}
+@keyframes loaderPulse {
+  from { opacity: 0.3; }
+  to   { opacity: 1; }
+}
+
 /* ── Hamburger (mobile) ── */
 .nav-hamburger {
   display: none;

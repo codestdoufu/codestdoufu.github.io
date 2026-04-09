@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Fu — Computer Engineering @ NYU Tandon</title>
   <meta name="description" content="David Fu — Computer Engineering student at NYU Tandon. Builder of games, bots, and custom PCs. USACO Platinum. AIME Qualifier.">
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="David Fu — Computer Engineering @ NYU Tandon">
+  <meta property="og:description" content="Builder of games, bots, and custom PCs. USACO Platinum. AIME Qualifier. NYU Tandon '29.">
+  <meta property="og:url"         content="https://codestdoufu.github.io/Personal-Website">
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:title"       content="David Fu — Portfolio">
+  <meta name="twitter:description" content="Builder of games, bots, and custom PCs. USACO Platinum. NYU Tandon '29.">
+  <meta name="theme-color"         content="#2d7dd2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -23,6 +33,12 @@
   <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
+
+  <!-- Page loader -->
+  <div id="page-loader"><div class="loader-logo">DF</div></div>
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Back to top">↑</button>
 
   <!-- ═══ TICKER ═══ -->
   <div class="ticker">
@@ -442,7 +458,7 @@
         <h4>Spoken Languages</h4>
         <div class="lang-chips">
           <span class="lang-chip"><strong>English</strong> <em>Native</em></span>
-          <span class="lang-chip"><strong>Mandarin 普通话</strong> <em>Native</em></span>
+          <span class="lang-chip"><strong>Mandarin 普通话</strong> <em>Fluent</em></span>
         </div>
       </div>
 
@@ -456,6 +472,10 @@
       <div class="contact-left reveal">
         <h2 class="section-title">Let's <em>connect.</em></h2>
         <p class="contact-intro">Whether you want to talk about a project, an internship, or just geek out about code and PCs — I'm always down to chat.</p>
+        <div class="copy-email-row">
+          <span>yf2953@nyu.edu</span>
+          <button class="copy-btn" id="copy-email-btn">Copy</button>
+        </div>
         <div class="social-links">
 
           <a class="social-link" href="https://github.com/codestdoufu" target="_blank" rel="noopener">
@@ -517,6 +537,7 @@
           <textarea id="message" placeholder="What's on your mind?"></textarea>
         </div>
         <button class="btn-submit" id="submit-btn">Send Message</button>
+        <p class="form-status" id="form-status"></p>
       </div>
     </div>
   </section>
@@ -524,7 +545,7 @@
   <!-- ═══ FOOTER ═══ -->
   <footer>
     <div class="footer-logo">David <span>Fu</span></div>
-    <div class="footer-copy">© 2025 David Fu · Brooklyn, NY · NYU Tandon '29</div>
+    <div class="footer-copy">© <span id="footer-year">2025</span> David Fu · Brooklyn, NY · NYU Tandon '29</div>
     <div class="footer-links">
       <a href="https://github.com/codestdoufu" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/david-fu1/" target="_blank" rel="noopener">LinkedIn</a>

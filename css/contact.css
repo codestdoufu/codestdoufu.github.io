@@ -165,3 +165,53 @@
     gap: 3rem;
   }
 }
+
+.btn-submit.error { background: #c0392b; }
+
+/* Form status message */
+.form-status {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 0.75rem;
+  min-height: 1.2em;
+  color: var(--blue-accent);
+}
+.form-status.error { color: #c0392b; }
+
+/* Copy email chip */
+.copy-email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1rem;
+  background: var(--blue-pale);
+  border-radius: var(--radius-sm);
+  max-width: fit-content;
+}
+.copy-email-row span {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  letter-spacing: 0.02em;
+}
+.copy-btn {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-accent);
+  background: white;
+  border: 1px solid var(--blue-light);
+  padding: 0.28rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.copy-btn:hover { background: var(--blue-accent); color: white; }
+.copy-btn.copied { background: #1b7a4a; color: white; border-color: #1b7a4a; }
