@@ -2,7 +2,7 @@
 
 Portfolio site built from scratch with HTML, CSS, and vanilla JavaScript. No frameworks, no build tools, no dependencies — just clean code.
 
-Live at: [codestdoufu.github.io/Personal-Website](https://codestdoufu.github.io/Personal-Website)
+Live at: [codestdoufu.github.io](https://codestdoufu.github.io)
 
 ---
 
