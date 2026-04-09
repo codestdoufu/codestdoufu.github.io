@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found · David Fu</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    :root {
+      --cream:        #f4f8fd;
+      --blue-pale:    #ddeeff;
+      --blue-light:   #b8d4f0;
+      --blue-mid:     #5b9bd5;
+      --blue-accent:  #2d7dd2;
+      --blue-deep:    #1b4f8a;
+      --blue-darkest: #0d2b4e;
+      --ink:          #0d1b2a;
+      --ink-50:       rgba(13,27,42,0.50);
+      --ink-12:       rgba(13,27,42,0.12);
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-ui:      'Syne', system-ui, sans-serif;
+      --font-sans:    'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Big background number */
+    body::before {
+      content: '404';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(16rem, 40vw, 28rem);
+      font-style: italic;
+      color: rgba(43, 125, 210, 0.05);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .eyebrow::before,
+    .eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--blue-accent);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--blue-accent);
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--ink-50);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 380px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue-accent);
+      color: white;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--blue-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-50);
+      border-bottom: 1.5px solid var(--ink-12);
+      padding-bottom: 2px;
+      text-decoration: none;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-outline:hover {
+      color: var(--blue-accent);
+      border-color: var(--blue-accent);
+    }
+
+    .logo {
+      position: fixed;
+      top: 1.5rem;
+      left: 2rem;
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .logo span { color: var(--blue-accent); }
+
+    /* Ticker at bottom */
+    .ticker {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--blue-deep);
+      padding: 0.5rem 0;
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 3rem;
+      width: max-content;
+      animation: roll 20s linear infinite;
+    }
+    @keyframes roll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #b8d4f0;
+      white-space: nowrap;
+    }
+    .ticker-item::before {
+      content: '◆ ';
+      color: var(--blue-mid);
+      font-size: 0.45rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="logo" href="index.html">David <span>Fu</span></a>
+
+  <div class="container">
+    <p class="eyebrow">Error 404</p>
+    <h1>Nothing here<br>but <em>empty space.</em></h1>
+    <p>Whatever you were looking for doesn't exist — or maybe it moved. Head back and find something that does.</p>
+    <div class="actions">
+      <a class="btn-primary" href="index.html">Back to Home</a>
+      <a class="btn-outline" href="index.html#projects">See Projects</a>
+    </div>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Page Not Found</span>
+      <span class="ticker-item">NYU Tandon '29</span>
+      <span class="ticker-item">USACO Platinum</span>
+      <span class="ticker-item">Error 404</span>
+      <span class="ticker-item">Try Again</span>
+      <span class="ticker-item">Custom PC Builder</span>
+      <span class="ticker-item">Page Not Found</span>
+      <span class="ticker-item">NYU Tandon '29</span>
+      <span class="ticker-item">USACO Platinum</span>
+      <span class="ticker-item">Error 404</span>
+      <span class="ticker-item">Try Again</span>
+      <span class="ticker-item">Custom PC Builder</span>
+    </div>
+  </div>
+
+</body>
+</html>

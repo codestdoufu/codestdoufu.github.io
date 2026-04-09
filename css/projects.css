@@ -1,7 +1,7 @@
 /* ── projects.css ── */
 #projects {
   border-top: 1px solid var(--ink-12);
-  background: var(--cream);
+  background: var(--white);
 }
 
 .projects-grid {
@@ -10,35 +10,64 @@
   gap: 1.5rem;
 }
 
-/* ── Big feature card ── */
+/* ── Featured card — full width, dramatic ── */
 .project-big {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: var(--blue-darkest);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  min-height: 280px;
+  min-height: 300px;
+  position: relative;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.project-big:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(8, 30, 56, 0.25);
 }
 
 .project-big-left {
-  padding: 2.5rem;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .project-big-right {
-  background: rgba(43, 125, 210, 0.15);
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.project-big-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 106, 191, 0.12);
+}
+.project-big-right::after {
+  content: '{  }';
   font-family: var(--font-display);
-  font-size: 8rem;
-  color: rgba(184, 212, 240, 0.15);
+  font-size: 7rem;
   font-style: italic;
-  padding: 2rem;
-  overflow: hidden;
+  color: rgba(168, 196, 232, 0.12);
+  letter-spacing: -0.05em;
+  position: relative;
+  z-index: 1;
+}
+/* Ring decoration */
+.project-big::after {
+  content: '';
+  position: absolute;
+  width: 350px; height: 350px;
+  border-radius: 50%;
+  border: 1px solid rgba(168, 196, 232, 0.07);
+  top: -80px; right: 60px;
+  pointer-events: none;
 }
 
 .proj-tag-dark {
@@ -48,25 +77,22 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--blue-mid);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
-
 .proj-name-dark {
   font-family: var(--font-display);
-  font-size: 1.9rem;
-  color: #e8f3ff;
-  margin-bottom: 0.8rem;
-  line-height: 1.1;
+  font-size: 2.1rem;
+  color: #e4eef8;
+  margin-bottom: 0.9rem;
+  line-height: 1.05;
 }
-
 .proj-desc-dark {
-  font-size: 0.88rem;
-  color: rgba(232, 243, 255, 0.55);
-  line-height: 1.65;
+  font-size: 0.9rem;
+  color: rgba(228, 238, 248, 0.5);
+  line-height: 1.7;
   font-weight: 300;
   flex: 1;
 }
-
 .proj-link {
   display: inline-flex;
   align-items: center;
@@ -76,38 +102,37 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--blue-mid);
-  margin-top: 1.5rem;
-  transition: color var(--transition);
+  color: var(--blue-light);
+  margin-top: 2rem;
+  transition: color var(--transition), gap var(--transition);
 }
-.proj-link:hover { color: #e8f3ff; }
+.proj-link:hover { color: #e4eef8; gap: 0.8rem; }
 .proj-link::after { content: ' →'; }
 
-/* ── Standard project cards ── */
+/* ── Standard cards ── */
 .proj-card {
-  background: var(--white);
+  background: var(--cream);
   border: 1px solid var(--ink-12);
   border-radius: var(--radius-lg);
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
 .proj-card:hover {
-  box-shadow: 0 6px 24px rgba(13, 27, 42, 0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(12, 24, 36, 0.08);
+  transform: translateY(-3px);
+  border-color: var(--blue-light);
 }
 
 .proj-card-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
-
 .proj-icon {
-  width: 44px;
-  height: 44px;
+  width: 46px; height: 46px;
   background: var(--blue-pale);
   border-radius: var(--radius-md);
   display: flex;
@@ -115,55 +140,45 @@
   justify-content: center;
   font-size: 20px;
 }
-
 .proj-status {
   font-family: var(--font-ui);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: rgba(45, 125, 210, 0.1);
+  background: rgba(26, 106, 191, 0.1);
   color: var(--blue-accent);
-  padding: 0.2rem 0.55rem;
+  padding: 0.22rem 0.6rem;
   border-radius: 20px;
 }
 
 .proj-card h3 {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: var(--ink);
   margin-bottom: 0.5rem;
 }
-
 .proj-card p {
-  font-size: 0.85rem;
+  font-size: 0.87rem;
   color: var(--ink-50);
-  line-height: 1.65;
+  line-height: 1.7;
   font-weight: 300;
   flex: 1;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
-
-.proj-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: auto;
-}
-
+.proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
 .proj-tag-pill {
   font-family: var(--font-ui);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: var(--ink-6);
-  color: var(--ink-50);
-  padding: 0.22rem 0.55rem;
+  background: var(--blue-pale);
+  color: var(--blue-deep);
+  padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .projects-grid { grid-template-columns: 1fr 1fr; }
   .project-big { grid-template-columns: 1fr; }
