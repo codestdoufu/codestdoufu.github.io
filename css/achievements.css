@@ -1,0 +1,84 @@
+/* ── achievements.css ── */
+#achievements {
+  background: var(--blue-darkest);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#achievements .section-label {
+  color: var(--blue-light);
+}
+#achievements .section-label::after {
+  background: var(--blue-light);
+}
+
+#achievements h2.section-title {
+  color: #e8f3ff;
+}
+#achievements h2.section-title em {
+  color: var(--blue-light);
+}
+
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.ach-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: background var(--transition), border-color var(--transition);
+}
+.ach-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(184, 212, 240, 0.2);
+}
+
+.ach-year {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  margin-bottom: 0.7rem;
+}
+
+.ach-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #e8f3ff;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.ach-desc {
+  font-size: 0.82rem;
+  color: rgba(232, 243, 255, 0.45);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.ach-badge {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(43, 125, 210, 0.25);
+  color: var(--blue-light);
+  padding: 0.22rem 0.6rem;
+  border-radius: 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ach-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .ach-grid { grid-template-columns: 1fr; }
+}

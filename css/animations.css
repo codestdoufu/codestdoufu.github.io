@@ -1,0 +1,42 @@
+/* ── animations.css ── */
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes roll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children inside a revealed parent */
+.reveal.visible .ach-card:nth-child(1),
+.reveal.visible .proj-card:nth-child(1),
+.reveal.visible .skill-group:nth-child(1) { transition-delay: 0.05s; }
+
+.reveal.visible .ach-card:nth-child(2),
+.reveal.visible .proj-card:nth-child(2),
+.reveal.visible .skill-group:nth-child(2) { transition-delay: 0.10s; }
+
+.reveal.visible .ach-card:nth-child(3),
+.reveal.visible .proj-card:nth-child(3),
+.reveal.visible .skill-group:nth-child(3) { transition-delay: 0.15s; }
+
+.reveal.visible .ach-card:nth-child(4),
+.reveal.visible .skill-group:nth-child(4) { transition-delay: 0.20s; }
+
+.reveal.visible .ach-card:nth-child(5) { transition-delay: 0.25s; }
+.reveal.visible .ach-card:nth-child(6) { transition-delay: 0.30s; }

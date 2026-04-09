@@ -1,0 +1,167 @@
+/* ── contact.css ── */
+#contact {
+  background: var(--white);
+  border-top: 1px solid var(--ink-12);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* Left: intro + socials */
+.contact-intro {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink-50);
+  font-weight: 300;
+  max-width: 360px;
+  margin-bottom: 2.5rem;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--cream);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.social-link:hover {
+  border-color: var(--blue-mid);
+  box-shadow: 0 4px 12px rgba(43, 125, 210, 0.1);
+}
+.social-link--static { cursor: default; }
+.social-link--static:hover {
+  border-color: var(--ink-12);
+  box-shadow: none;
+}
+
+.social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+.social-icon.github    { background: #1a1a2e; }
+.social-icon.linkedin  { background: #0077b5; }
+.social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-icon.discord   { background: #5865f2; }
+
+.social-name {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-30);
+  display: block;
+  margin-bottom: 1px;
+}
+.social-handle {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+}
+
+/* Right: contact form */
+.contact-right {
+  background: var(--cream);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+}
+
+.contact-right h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.contact-right > p {
+  font-size: 0.88rem;
+  color: var(--ink-50);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+.form-group label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color var(--transition);
+  resize: none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--blue-accent);
+}
+.form-group textarea {
+  height: 110px;
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--blue-accent);
+  color: white;
+  font-family: var(--font-ui);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.95rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition);
+  margin-top: 0.5rem;
+}
+.btn-submit:hover    { background: var(--blue-deep); }
+.btn-submit.sent     { background: #1b7a4a; cursor: default; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

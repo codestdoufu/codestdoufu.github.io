@@ -1,0 +1,134 @@
+/* ── skills.css ── */
+#skills {
+  background: var(--cream);
+  border-top: 1px solid var(--ink-12);
+}
+
+.skills-layout {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-group {
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  transition: box-shadow var(--transition);
+}
+.skill-group:hover {
+  box-shadow: 0 4px 16px rgba(13, 27, 42, 0.06);
+}
+
+.skill-group-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--blue-pale);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+
+.skill-group h4 {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.skill-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--ink-70);
+}
+
+.skill-bar {
+  width: 70px;
+  height: 3px;
+  background: var(--ink-12);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--blue-accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s ease;
+}
+.skill-bar-fill.animated {
+  transform: scaleX(1);
+}
+
+/* Language section — spans full row */
+.skill-lang-section {
+  grid-column: 1 / -1;
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.skill-lang-section h4 {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.lang-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.lang-chip {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--ink-70);
+  background: var(--cream);
+  border: 1px solid var(--ink-12);
+  padding: 0.38rem 0.9rem;
+  border-radius: 20px;
+}
+.lang-chip strong { font-weight: 500; color: var(--ink); }
+.lang-chip em {
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--blue-accent);
+  margin-left: 0.3rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .skills-layout { grid-template-columns: repeat(2, 1fr); }
+  .skill-lang-section { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .skills-layout { grid-template-columns: 1fr; }
+  .skill-lang-section { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}

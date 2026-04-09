@@ -1,0 +1,33 @@
+/* ── variables.css ── */
+:root {
+  /* Colors */
+  --cream:        #f4f8fd;
+  --white:        #ffffff;
+  --blue-pale:    #ddeeff;
+  --blue-light:   #b8d4f0;
+  --blue-mid:     #5b9bd5;
+  --blue-accent:  #2d7dd2;
+  --blue-deep:    #1b4f8a;
+  --blue-darkest: #0d2b4e;
+
+  --ink:    #0d1b2a;
+  --ink-70: rgba(13, 27, 42, 0.70);
+  --ink-50: rgba(13, 27, 42, 0.50);
+  --ink-30: rgba(13, 27, 42, 0.30);
+  --ink-12: rgba(13, 27, 42, 0.12);
+  --ink-6:  rgba(13, 27, 42, 0.06);
+
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-ui:      'Syne', system-ui, sans-serif;
+
+  /* Spacing */
+  --section-pad: 6rem 4rem;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}
