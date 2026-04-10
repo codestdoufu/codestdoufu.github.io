@@ -1,116 +1,120 @@
 /* ── extras.css ── */
-/* Cursor glow, GitHub feed, status badge, nav scroll shrink */
 
 /* ═══════════════════════════════════════
    CURSOR GLOW
 ═══════════════════════════════════════ */
 #cursor-glow {
   position: fixed;
-  top: -200px;
-  left: -200px;
-  width: 400px;
-  height: 400px;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(45, 125, 210, 0.10) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(26, 106, 191, 0.09) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
   opacity: 0;
   transition: opacity 0.4s ease;
-  /* translate is set by JS; offset so center tracks cursor */
-  margin-top: -200px;
-  margin-left: -200px;
+  margin-top: -210px;
+  margin-left: -210px;
   will-change: transform;
 }
 
 /* ═══════════════════════════════════════
-   STATUS BADGE — "Open to opportunities"
-   Sits in the hero eyebrow area via HTML addition
+   STATUS BADGE
 ═══════════════════════════════════════ */
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(27, 122, 74, 0.10);
-  border: 1px solid rgba(27, 122, 74, 0.22);
+  background: rgba(27, 122, 74, 0.09);
+  border: 1px solid rgba(27, 122, 74, 0.2);
   color: #1b7a4a;
   font-family: var(--font-ui);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.32rem 0.75rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 20px;
   margin-bottom: 1.2rem;
   width: fit-content;
   opacity: 0;
-  animation: fadeUp 0.7s 0.05s ease both;
+  animation: fadeUp 0.6s 0.05s ease both;
 }
-
 .status-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: #1b7a4a;
   border-radius: 50%;
   flex-shrink: 0;
-  animation: pulse-dot 2s ease infinite;
+  animation: pulse-dot 2.2s ease infinite;
 }
-
 @keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(27, 122, 74, 0.5); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(27, 122, 74, 0.45); }
   50%       { box-shadow: 0 0 0 5px rgba(27, 122, 74, 0); }
 }
 
 /* ═══════════════════════════════════════
-   NAV SCROLL SHRINK
+   SECONDARY EMAIL (NYU)
 ═══════════════════════════════════════ */
-nav {
-  transition: padding 0.25s ease, box-shadow 0.25s ease;
+.copy-email-row--secondary {
+  background: rgba(26, 106, 191, 0.06);
+  border: 1px solid rgba(26, 106, 191, 0.15);
+  margin-top: -1.2rem; /* pull it up to sit snug under the first */
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 }
-nav.scrolled {
-  padding-top: 0.85rem;
-  padding-bottom: 0.85rem;
-  box-shadow: 0 2px 20px rgba(13, 27, 42, 0.07);
+.copy-email-row--secondary span:first-child {
+  color: var(--blue-deep);
 }
-@media (max-width: 768px) {
-  nav.scrolled { padding: 0.75rem 1.5rem; }
+.email-label {
+  font-family: var(--font-ui);
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-accent);
+  background: rgba(26, 106, 191, 0.12);
+  padding: 0.18rem 0.5rem;
+  border-radius: 10px;
 }
 
 /* ═══════════════════════════════════════
-   GITHUB ACTIVITY SECTION
+   NOW SECTION
 ═══════════════════════════════════════ */
-#github-activity {
-  background: var(--white);
+#now {
+  background: var(--cream);
   border-top: 1px solid var(--ink-12);
 }
 
-.gh-layout {
+.now-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 4rem;
   align-items: start;
 }
 
-.gh-sidebar {
+.now-sidebar {
   position: sticky;
   top: 120px;
 }
-.gh-sidebar h2.section-title {
+.now-sidebar h2.section-title {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-.gh-sidebar p {
-  font-size: 0.95rem;
+.now-sidebar p {
+  font-size: 0.92rem;
   color: var(--ink-50);
-  line-height: 1.75;
+  line-height: 1.8;
   font-weight: 300;
   margin-bottom: 1.5rem;
 }
-.gh-sidebar a {
+.now-sidebar a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -119,138 +123,73 @@ nav.scrolled {
   padding-bottom: 2px;
   transition: border-color var(--transition);
 }
-.gh-sidebar a:hover { border-color: var(--blue-accent); }
+.now-sidebar a:hover { border-color: var(--blue-accent); }
 
-/* Feed */
-#github-feed {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.gh-item {
-  display: flex;
-  align-items: center;
+/* Cards grid — 2 columns */
+.now-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--ink-12);
-  animation: fadeUp 0.4s ease both;
 }
-.gh-item:last-child { border-bottom: none; }
 
-.gh-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--blue-pale);
-  border-radius: var(--radius-md);
+.now-card {
+  background: var(--white);
+  border: 1px solid var(--ink-12);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.8rem;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+.now-card:hover {
+  box-shadow: 0 6px 24px rgba(12, 24, 36, 0.08);
+  transform: translateY(-2px);
+  border-color: var(--blue-light);
+}
+
+.now-card-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  color: var(--blue-accent);
-  flex-shrink: 0;
-  font-style: normal;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
 }
+.now-icon { font-size: 1.1rem; line-height: 1; }
 
-.gh-body {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  min-width: 0;
-}
-
-.gh-action {
-  font-size: 0.82rem;
-  color: var(--ink-50);
-  font-weight: 300;
-}
-
-.gh-repo {
+.now-tag {
   font-family: var(--font-ui);
-  font-size: 0.8rem;
+  font-size: 0.57rem;
   font-weight: 700;
-  color: var(--blue-accent);
-  letter-spacing: 0.02em;
-  transition: color var(--transition);
-}
-.gh-repo:hover { color: var(--blue-deep); }
-
-.gh-commits {
-  font-family: var(--font-ui);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  background: rgba(45, 125, 210, 0.1);
-  color: var(--blue-accent);
-  padding: 0.18rem 0.5rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 20px;
 }
+.now-tag--blue   { background: rgba(26, 106, 191, 0.1);  color: var(--blue-accent); }
+.now-tag--green  { background: rgba(27, 122, 74, 0.1);   color: #1b7a4a; }
+.now-tag--purple { background: rgba(108, 54, 179, 0.1);  color: #6c36b3; }
+.now-tag--orange { background: rgba(232, 83, 26, 0.1);   color: var(--fire); }
 
-.gh-time {
-  font-family: var(--font-ui);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-30);
-  white-space: nowrap;
-  flex-shrink: 0;
+.now-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
-
-/* Loading skeleton */
-.gh-skeleton {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.gh-skeleton-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--ink-12);
-}
-.gh-skel-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
-  background: var(--ink-12);
-  flex-shrink: 0;
-  animation: shimmer 1.4s ease infinite;
-}
-.gh-skel-line {
-  height: 10px;
-  border-radius: 4px;
-  background: var(--ink-12);
-  animation: shimmer 1.4s ease infinite;
-}
-.gh-skel-line.long  { width: 55%; }
-.gh-skel-line.short { width: 30%; margin-left: auto; }
-
-@keyframes shimmer {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
-}
-
-.gh-empty {
-  font-size: 0.88rem;
+.now-card p {
+  font-size: 0.84rem;
   color: var(--ink-50);
+  line-height: 1.7;
   font-weight: 300;
-  padding: 1rem 0;
-}
-.gh-empty a {
-  color: var(--blue-accent);
-  font-weight: 500;
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .now-cards { grid-template-columns: 1fr; }
+}
 @media (max-width: 900px) {
-  .gh-layout {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .gh-sidebar { position: static; }
+  .now-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .now-sidebar { position: static; }
+  .now-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .now-cards { grid-template-columns: 1fr; }
 }

@@ -36,22 +36,23 @@
 
 /* ═══════════════════════════════════════
    3. SKILL BAR ANIMATION
+   Bars use --fill-width CSS custom property.
+   .animated triggers the width transition.
 ═══════════════════════════════════════ */
 (function initSkillBars() {
   const skillsSection = document.getElementById('skills');
   if (!skillsSection) return;
   let animated = false;
-  const animateBars = () => {
-    if (animated) return;
-    animated = true;
-    document.querySelectorAll('.skill-bar-fill').forEach((fill) => {
-      fill.classList.add('animated');
-    });
-  };
   const observer = new IntersectionObserver(
     (entries) => {
       if (entries[0].isIntersecting) {
-        setTimeout(animateBars, 300);
+        if (animated) return;
+        animated = true;
+        setTimeout(() => {
+          document.querySelectorAll('.skill-bar-fill').forEach((fill) => {
+            fill.classList.add('animated');
+          });
+        }, 300);
         observer.disconnect();
       }
     },
@@ -68,11 +69,13 @@
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('nav-links');
   if (!hamburger || !navLinks) return;
+
   hamburger.addEventListener('click', () => {
     const isOpen = hamburger.classList.toggle('open');
     navLinks.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', String(isOpen));
   });
+
   navLinks.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('open');
@@ -80,6 +83,7 @@
       hamburger.setAttribute('aria-expanded', 'false');
     });
   });
+
   document.addEventListener('click', (e) => {
     if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
       hamburger.classList.remove('open');
@@ -109,7 +113,7 @@
     },
     { rootMargin: '-40% 0px -55% 0px' }
   );
-  sections.forEach((section) => observer.observe(section));
+  sections.forEach((s) => observer.observe(s));
 })();
 
 
@@ -134,16 +138,13 @@
   window.addEventListener('scroll', () => {
     btn.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 
 
 /* ═══════════════════════════════════════
    8. CURSOR GLOW
-   Smooth blue radial glow following the mouse.
-   Skipped on touch/mobile devices.
+   Smooth lerp-following glow, desktop only.
 ═══════════════════════════════════════ */
 (function initCursorGlow() {
   if (window.matchMedia('(hover: none)').matches) return;
@@ -152,37 +153,28 @@
   glow.id = 'cursor-glow';
   document.body.appendChild(glow);
 
-  let mouseX = -999, mouseY = -999;
-  let glowX  = -999, glowY  = -999;
+  let mx = -999, my = -999, gx = -999, gy = -999;
 
   document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    mx = e.clientX; my = e.clientY;
     glow.style.opacity = '1';
   }, { passive: true });
 
-  document.addEventListener('mouseleave', () => {
-    glow.style.opacity = '0';
-  });
+  document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  (function animate() {
-    glowX = lerp(glowX, mouseX, 0.08);
-    glowY = lerp(glowY, mouseY, 0.08);
-    glow.style.transform = `translate(${glowX}px, ${glowY}px)`;
-    requestAnimationFrame(animate);
+  const lerp = (a, b, t) => a + (b - a) * t;
+  (function tick() {
+    gx = lerp(gx, mx, 0.08);
+    gy = lerp(gy, my, 0.08);
+    glow.style.transform = `translate(${gx}px,${gy}px)`;
+    requestAnimationFrame(tick);
   })();
 })();
 
 
 /* ═══════════════════════════════════════
    9. CONTACT FORM — FORMSPREE
-
-   HOW TO ACTIVATE:
-   1. Go to https://formspree.io and sign up (free)
-   2. Create a new form — you'll get an ID like "xyzabcde"
-   3. Replace YOUR_FORMSPREE_ID below with that ID
+   ID: xdapvayz (active)
 ═══════════════════════════════════════ */
 (function initContactForm() {
   const btn       = document.getElementById('submit-btn');
@@ -195,16 +187,16 @@
   const emailEl   = document.getElementById('email');
   const messageEl = document.getElementById('message');
 
-  function setStatus(msg, isError) {
+  const setStatus = (msg, isError) => {
     if (!statusEl) return;
     statusEl.textContent = msg;
     statusEl.className = 'form-status' + (isError ? ' error' : '');
-  }
+  };
 
-  function highlightField(el) {
+  const highlightField = (el) => {
     el.style.borderColor = '#e05c3a';
     el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
-  }
+  };
 
   btn.addEventListener('click', async () => {
     const name    = nameEl?.value.trim()    || '';
@@ -214,20 +206,10 @@
     if (!name)    highlightField(nameEl);
     if (!email)   highlightField(emailEl);
     if (!message) highlightField(messageEl);
-    if (!name || !email || !message) {
-      setStatus('Please fill in all fields.', true);
-      return;
-    }
-
+    if (!name || !email || !message) return setStatus('Please fill in all fields.', true);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       highlightField(emailEl);
-      setStatus('Please enter a valid email address.', true);
-      return;
-    }
-
-    if (FORM_ID === 'YOUR_FORMSPREE_ID') {
-      setStatus('Form not wired up yet — reach out via the socials below!', true);
-      return;
+      return setStatus('Please enter a valid email address.', true);
     }
 
     btn.textContent = 'Sending...';
@@ -244,22 +226,18 @@
         btn.textContent = 'Sent! ✓';
         btn.classList.add('sent');
         setStatus("Message received — I'll get back to you soon.");
-        nameEl.value = '';
-        emailEl.value = '';
-        messageEl.value = '';
+        nameEl.value = emailEl.value = messageEl.value = '';
         setTimeout(() => {
           btn.textContent = 'Send Message';
           btn.classList.remove('sent');
           btn.disabled = false;
           setStatus('');
         }, 4000);
-      } else {
-        throw new Error('bad response');
-      }
+      } else throw new Error();
     } catch {
       btn.textContent = 'Failed — try again';
       btn.classList.add('error');
-      setStatus('Something went wrong. Try emailing david328150@gmail.com directly.', true);
+      setStatus('Something went wrong. Email david328150@gmail.com directly.', true);
       setTimeout(() => {
         btn.textContent = 'Send Message';
         btn.classList.remove('error');
@@ -271,34 +249,38 @@
 
 
 /* ═══════════════════════════════════════
-   10. COPY EMAIL BUTTON
+   10. COPY EMAIL
+   Reads from the DOM so it never gets out of sync.
 ═══════════════════════════════════════ */
 (function initCopyEmail() {
   const btn = document.getElementById('copy-email-btn');
   if (!btn) return;
 
-  function showCopied() {
+  const EMAIL = document.getElementById('contact-email')?.textContent?.trim()
+              || 'david328150@gmail.com';
+
+  const showCopied = () => {
     btn.textContent = 'Copied!';
     btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = 'Copy';
-      btn.classList.remove('copied');
-    }, 2000);
-  }
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  };
+
+  const fallbackCopy = () => {
+    const el = Object.assign(document.createElement('textarea'), {
+      value: EMAIL,
+      style: 'position:fixed;opacity:0;pointer-events:none'
+    });
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    showCopied();
+  };
 
   btn.addEventListener('click', () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText('david328150@gmail.com').then(showCopied);
-    } else {
-      const el = document.createElement('textarea');
-      el.value = 'david328150@gmail.com';
-      el.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      showCopied();
-    }
+    navigator.clipboard
+      ? navigator.clipboard.writeText(EMAIL).then(showCopied).catch(fallbackCopy)
+      : fallbackCopy();
   });
 })();
 
@@ -313,90 +295,13 @@
 
 
 /* ═══════════════════════════════════════
-   12. SMOOTH SCROLL FALLBACK
+   12. SMOOTH SCROLL
 ═══════════════════════════════════════ */
 (function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
-})();
-
-
-/* ═══════════════════════════════════════
-   13. GITHUB ACTIVITY FEED
-   Pulls recent public events from the GitHub
-   API and renders them into #github-feed.
-═══════════════════════════════════════ */
-(function initGitHubFeed() {
-  const container = document.getElementById('github-feed');
-  if (!container) return;
-
-  const USERNAME = 'codestdoufu';
-  const API_URL  = `https://api.github.com/users/${USERNAME}/events/public?per_page=30`;
-
-  const EVENT_MAP = {
-    PushEvent:         { icon: '⬆', label: 'Pushed to' },
-    CreateEvent:       { icon: '✦', label: 'Created' },
-    WatchEvent:        { icon: '★', label: 'Starred' },
-    ForkEvent:         { icon: '⑂', label: 'Forked' },
-    IssuesEvent:       { icon: '◉', label: 'Issue on' },
-    PullRequestEvent:  { icon: '⇄', label: 'Pull request on' },
-    IssueCommentEvent: { icon: '◎', label: 'Commented on' },
-    DeleteEvent:       { icon: '✕', label: 'Deleted from' },
-    PublicEvent:       { icon: '◆', label: 'Made public' },
-    ReleaseEvent:      { icon: '⬡', label: 'Released on' },
-  };
-
-  function timeAgo(dateStr) {
-    const diff = Math.floor((Date.now() - new Date(dateStr)) / 1000);
-    if (diff < 60)    return `${diff}s ago`;
-    if (diff < 3600)  return `${Math.floor(diff / 60)}m ago`;
-    if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
-    return `${Math.floor(diff / 86400)}d ago`;
-  }
-
-  fetch(API_URL)
-    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-    .then(events => {
-      const seen = new Set();
-      const filtered = events.filter(e => {
-        const key = e.type + e.repo.name;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      }).slice(0, 6);
-
-      if (!filtered.length) {
-        container.innerHTML = '<p class="gh-empty">No recent public activity.</p>';
-        return;
-      }
-
-      container.innerHTML = filtered.map(event => {
-        const info    = EVENT_MAP[event.type] || { icon: '◆', label: 'Activity on' };
-        const repo    = event.repo.name.replace(`${USERNAME}/`, '');
-        const repoUrl = `https://github.com/${event.repo.name}`;
-        const commits = event.type === 'PushEvent' && event.payload?.commits?.length
-          ? `<span class="gh-commits">${event.payload.commits.length} commit${event.payload.commits.length !== 1 ? 's' : ''}</span>`
-          : '';
-        return `
-          <div class="gh-item">
-            <span class="gh-icon">${info.icon}</span>
-            <div class="gh-body">
-              <span class="gh-action">${info.label}</span>
-              <a class="gh-repo" href="${repoUrl}" target="_blank" rel="noopener">${repo}</a>
-              ${commits}
-            </div>
-            <span class="gh-time">${timeAgo(event.created_at)}</span>
-          </div>`;
-      }).join('');
-    })
-    .catch(() => {
-      container.innerHTML = `<p class="gh-empty">View activity on <a href="https://github.com/${USERNAME}" target="_blank" rel="noopener">GitHub →</a></p>`;
-    });
 })();

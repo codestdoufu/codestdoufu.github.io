@@ -10,7 +10,7 @@
   <meta property="og:type"        content="website">
   <meta property="og:title"       content="David Fu — Computer Engineering @ NYU Tandon">
   <meta property="og:description" content="Builder of games, bots, and custom PCs. USACO Platinum. AIME Qualifier. NYU Tandon '29.">
-  <meta property="og:url"         content="https://codestdoufu.github.io/Personal-Website">
+  <meta property="og:url"         content="https://codestdoufu.github.io/">
   <meta name="twitter:card"        content="summary">
   <meta name="twitter:title"       content="David Fu — Portfolio">
   <meta name="twitter:description" content="Builder of games, bots, and custom PCs. USACO Platinum. NYU Tandon '29.">
@@ -80,7 +80,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#github-activity">GitHub</a></li>
+      <li><a href="#now">Now</a></li>
       <li><a href="#contact" class="nav-cta">Contact</a></li>
     </ul>
   </nav>
@@ -99,6 +99,7 @@
       <div class="hero-actions">
         <a class="btn-primary" href="#projects">View Projects</a>
         <a class="btn-outline" href="#contact">Get in Touch</a>
+        <a class="btn-resume" href="assets/David_Fu_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
       </div>
       <div class="stats-row">
         <div class="stat">
@@ -110,8 +111,8 @@
           <span class="stat-label">Years building</span>
         </div>
         <div class="stat">
-          <span class="stat-num">6+</span>
-          <span class="stat-label">Languages</span>
+          <span class="stat-num">Soph.</span>
+          <span class="stat-label">Year at NYU</span>
         </div>
         <div class="stat">
           <span class="stat-num">'29</span>
@@ -120,20 +121,20 @@
       </div>
     </div>
 
-    <div class="hero-right"><div class="hero-blob"></div>
+    <div class="hero-right">
       <p class="card-section-label">Featured Projects</p>
       <div class="project-cards">
-        <div class="pcard">
+        <div class="pcard" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">
           <p class="pcard-tag">Python · Discord.py · GitHub</p>
           <p class="pcard-name">Creeper Discord Bot</p>
           <p class="pcard-desc">Multi-function bot with moderation, automated commands, and live API integrations for an active server community.</p>
         </div>
-        <div class="pcard">
+        <div class="pcard" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">
           <p class="pcard-tag">Unity · C#</p>
           <p class="pcard-name">Game Development</p>
           <p class="pcard-desc">Multiple interactive games built from scratch — gameplay systems, UI, core logic, and full debugging cycles.</p>
         </div>
-        <div class="pcard">
+        <div class="pcard" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">
           <p class="pcard-tag">Python · SQL</p>
           <p class="pcard-name">Data Analysis Project</p>
           <p class="pcard-desc">Automation scripts, SQL queries, and analytical workflows from a 6-month technical training program.</p>
@@ -222,7 +223,11 @@
           </div>
           <a class="proj-link" href="https://github.com/codestdoufu" target="_blank">View on GitHub</a>
         </div>
-        <div class="project-big-right">Bot</div>
+        <div class="project-big-right">
+          <div class="discord-gallery">
+            <img class="dc-img dc-img--solo" src="assets/discord.png" alt="Creeper bot economy commands">
+          </div>
+        </div>
       </div>
 
       <div class="proj-card">
@@ -420,13 +425,13 @@
         <div class="skill-group-icon">💻</div>
         <h4>Programming Languages</h4>
         <div class="skill-items">
-          <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-          <div class="skill-item"><span>C++</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
-          <div class="skill-item"><span>Java</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-          <div class="skill-item"><span>C#</span><div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div></div>
-          <div class="skill-item"><span>C</span><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-          <div class="skill-item"><span>SQL</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-          <div class="skill-item"><span>HTML</span><div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+          <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:95%"></div></div></div>
+          <div class="skill-item"><span>C++</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:88%"></div></div></div>
+          <div class="skill-item"><span>Java</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:80%"></div></div></div>
+          <div class="skill-item"><span>C#</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:82%"></div></div></div>
+          <div class="skill-item"><span>C</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:70%"></div></div></div>
+          <div class="skill-item"><span>SQL</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:75%"></div></div></div>
+          <div class="skill-item"><span>HTML</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:65%"></div></div></div>
         </div>
       </div>
 
@@ -434,11 +439,11 @@
         <div class="skill-group-icon">🎮</div>
         <h4>Game Dev & Tools</h4>
         <div class="skill-items">
-          <div class="skill-item"><span>Unity</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-          <div class="skill-item"><span>Git / GitHub</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-          <div class="skill-item"><span>Discord.py</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
-          <div class="skill-item"><span>VEX Robotics</span><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-          <div class="skill-item"><span>Scratch</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+          <div class="skill-item"><span>Unity</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:85%"></div></div></div>
+          <div class="skill-item"><span>Git / GitHub</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:80%"></div></div></div>
+          <div class="skill-item"><span>Discord.py</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:88%"></div></div></div>
+          <div class="skill-item"><span>VEX Robotics</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:70%"></div></div></div>
+          <div class="skill-item"><span>Scratch</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:90%"></div></div></div>
         </div>
       </div>
 
@@ -446,11 +451,11 @@
         <div class="skill-group-icon">🔐</div>
         <h4>Systems & Security</h4>
         <div class="skill-items">
-          <div class="skill-item"><span>Ubuntu Linux</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-          <div class="skill-item"><span>Cybersecurity</span><div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
-          <div class="skill-item"><span>Scripting</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-          <div class="skill-item"><span>PC Hardware</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-          <div class="skill-item"><span>Troubleshooting</span><div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+          <div class="skill-item"><span>Ubuntu Linux</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:80%"></div></div></div>
+          <div class="skill-item"><span>Cybersecurity</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:78%"></div></div></div>
+          <div class="skill-item"><span>Scripting</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:85%"></div></div></div>
+          <div class="skill-item"><span>PC Hardware</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:95%"></div></div></div>
+          <div class="skill-item"><span>Troubleshooting</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:92%"></div></div></div>
         </div>
       </div>
 
@@ -458,11 +463,11 @@
         <div class="skill-group-icon">🤝</div>
         <h4>Soft Skills</h4>
         <div class="skill-items">
-          <div class="skill-item"><span>Teaching</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-          <div class="skill-item"><span>Communication</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
-          <div class="skill-item"><span>Problem-Solving</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-          <div class="skill-item"><span>Client Relations</span><div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div></div>
-          <div class="skill-item"><span>Adaptability</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+          <div class="skill-item"><span>Teaching</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:90%"></div></div></div>
+          <div class="skill-item"><span>Communication</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:88%"></div></div></div>
+          <div class="skill-item"><span>Problem-Solving</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:95%"></div></div></div>
+          <div class="skill-item"><span>Client Relations</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:82%"></div></div></div>
+          <div class="skill-item"><span>Adaptability</span><div class="skill-bar"><div class="skill-bar-fill" style="--fill-width:88%"></div></div></div>
         </div>
       </div>
 
@@ -477,24 +482,47 @@
     </div>
   </section>
 
-  <!-- ═══ GITHUB ACTIVITY ═══ -->
-  <section id="github-activity">
-    <div class="section-label reveal">Live Activity</div>
-    <div class="gh-layout">
-      <div class="gh-sidebar reveal">
-        <h2 class="section-title">What I'm<br><em>building.</em></h2>
-        <p>Live feed from my GitHub — pulled straight from the API. If I'm coding, it shows up here.</p>
-        <a href="https://github.com/codestdoufu" target="_blank" rel="noopener">View GitHub Profile →</a>
+  <!-- ═══ NOW ═══ -->
+  <section id="now">
+    <div class="section-label reveal">Now</div>
+    <div class="now-layout">
+      <div class="now-sidebar reveal">
+        <h2 class="section-title">What I'm<br><em>up to.</em></h2>
+        <p>A snapshot of what I'm working on and where my head is at. Updated April 2026.</p>
+        <a href="https://github.com/codestdoufu" target="_blank" rel="noopener">GitHub Profile →</a>
       </div>
-      <div class="reveal">
-        <div id="github-feed">
-          <!-- Skeleton loader shown until JS populates -->
-          <div class="gh-skeleton">
-            <div class="gh-skeleton-item"><div class="gh-skel-icon"></div><div class="gh-skel-line long"></div><div class="gh-skel-line short"></div></div>
-            <div class="gh-skeleton-item"><div class="gh-skel-icon"></div><div class="gh-skel-line long"></div><div class="gh-skel-line short"></div></div>
-            <div class="gh-skeleton-item"><div class="gh-skel-icon"></div><div class="gh-skel-line long"></div><div class="gh-skel-line short"></div></div>
-            <div class="gh-skeleton-item"><div class="gh-skel-icon"></div><div class="gh-skel-line long"></div><div class="gh-skel-line short"></div></div>
+      <div class="now-cards reveal">
+        <div class="now-card">
+          <div class="now-card-header">
+            <span class="now-icon">📚</span>
+            <span class="now-tag now-tag--blue">Studying</span>
           </div>
+          <h4>Sophomore year at NYU Tandon</h4>
+          <p>Deep in circuits, data structures, and computer architecture. The coursework is getting real — so is the coffee intake.</p>
+        </div>
+        <div class="now-card">
+          <div class="now-card-header">
+            <span class="now-icon">🤖</span>
+            <span class="now-tag now-tag--green">Building</span>
+          </div>
+          <h4>Expanding Creeper Bot</h4>
+          <p>Adding slash command support, better logging, and new API integrations. The bot never really stops getting updated.</p>
+        </div>
+        <div class="now-card">
+          <div class="now-card-header">
+            <span class="now-icon">🔐</span>
+            <span class="now-tag now-tag--purple">Sharpening</span>
+          </div>
+          <h4>CTF competitions & security</h4>
+          <p>Getting back into capture-the-flag challenges. Keeping the Linux and Python scripting skills sharp post-high school nationals.</p>
+        </div>
+        <div class="now-card">
+          <div class="now-card-header">
+            <span class="now-icon">🎯</span>
+            <span class="now-tag now-tag--orange">Seeking</span>
+          </div>
+          <h4>Summer 2026 internship</h4>
+          <p>Actively looking for SWE or computer engineering internships. Open to systems, backend, tooling — anywhere I can ship real code.</p>
         </div>
       </div>
     </div>
@@ -508,8 +536,12 @@
         <h2 class="section-title">Let's <em>connect.</em></h2>
         <p class="contact-intro">Whether you want to talk about a project, an internship, or just geek out about code and PCs — I'm always down to chat.</p>
         <div class="copy-email-row">
-          <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a5e5b4c535e0908020b0f0a7a5d575b535614595557">[email&#160;protected]</a></span>
+          <span id="contact-email">david328150&#64;gmail&#46;com</span>
           <button class="copy-btn" id="copy-email-btn">Copy</button>
+        </div>
+        <div class="copy-email-row copy-email-row--secondary">
+          <span id="contact-email-nyu">yf2953&#64;nyu&#46;edu</span>
+          <span class="email-label">NYU</span>
         </div>
         <div class="social-links">
 
@@ -581,9 +613,9 @@
   <footer>
     <div class="footer-logo">David <span>Fu</span></div>
     <div class="footer-copy">© <span id="footer-year">2025</span> David Fu · Brooklyn, NY · NYU Tandon '29</div>
-        <div class="footer-links">
+    <div class="footer-links">
       <a href="https://github.com/codestdoufu" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/david-fu1/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/david-fu1/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.instagram.com/codesttofu" target="_blank" rel="noopener">Instagram</a>
     </div>
   </footer>
